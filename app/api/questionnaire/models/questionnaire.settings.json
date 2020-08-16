@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "questionnaires",
+  "info": {
+    "name": "Questionnaire"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "StepNumber": {
+      "required": true,
+      "type": "integer"
+    },
+    "Title": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "richtext"
+    },
+    "Images": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}

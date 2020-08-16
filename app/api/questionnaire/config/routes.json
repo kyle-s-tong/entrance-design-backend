@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/questionnaires",
+      "handler": "questionnaire.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/questionnaires/count",
+      "handler": "questionnaire.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/questionnaires/:id",
+      "handler": "questionnaire.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/questionnaires",
+      "handler": "questionnaire.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/questionnaires/:id",
+      "handler": "questionnaire.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/questionnaires/:id",
+      "handler": "questionnaire.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
