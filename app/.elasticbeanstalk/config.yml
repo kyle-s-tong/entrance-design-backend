@@ -1,0 +1,22 @@
+branch-defaults:
+  master:
+    environment: entrance-design-backend
+    group_suffix: null
+environment-defaults:
+  entrance-design-backend:
+    branch: null
+    repository: null
+global:
+  application_name: entrance-design-backend
+  branch: null
+  default_ec2_keyname: entrance-design
+  default_platform: Node.js 12 running on 64bit Amazon Linux 2
+  default_region: ap-southeast-2
+  include_git_submodules: true
+  instance_profile: null
+  platform_name: null
+  platform_version: null
+  profile: eb-cli
+  repository: null
+  sc: git
+  workspace_type: Application
