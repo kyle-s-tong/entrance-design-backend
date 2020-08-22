@@ -25,4 +25,4 @@ services:
       MYSQL_ROOT_PASSWORD: strapi
       MYSQL_DATABASE: strapi
     volumes:
-      - ./data:/var/lib/postgresql/data
+      - ./mysql:/var/lib/mysql
