@@ -19,14 +19,8 @@
     "Description": {
       "type": "richtext"
     },
-    "Images": {
-      "collection": "file",
-      "via": "related",
-      "allowedTypes": [
-        "images"
-      ],
-      "plugin": "upload",
-      "required": false
+    "questionnaire_options": {
+      "collection": "questionnaire-option"
     }
   }
 }

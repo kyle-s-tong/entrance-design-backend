@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "questionnaire_options",
+  "info": {
+    "name": "Questionnaire Option"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "Image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true
+    },
+    "CategoryValues": {
+      "type": "json",
+      "required": true
+    },
+    "title": {
+      "type": "string"
+    }
+  }
+}

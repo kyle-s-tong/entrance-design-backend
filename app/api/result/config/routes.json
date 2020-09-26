@@ -1,0 +1,10 @@
+{
+  "routes": {
+    "method": "POST",
+    "path": "/results",
+    "handler": "result.generate",
+    "config": {
+      "policies": []
+    }
+  }
+}

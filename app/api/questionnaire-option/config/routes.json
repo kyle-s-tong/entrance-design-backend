@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/questionnaire-options",
+      "handler": "questionnaire-option.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/questionnaire-options/count",
+      "handler": "questionnaire-option.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/questionnaire-options/:id",
+      "handler": "questionnaire-option.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/questionnaire-options",
+      "handler": "questionnaire-option.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/questionnaire-options/:id",
+      "handler": "questionnaire-option.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/questionnaire-options/:id",
+      "handler": "questionnaire-option.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
