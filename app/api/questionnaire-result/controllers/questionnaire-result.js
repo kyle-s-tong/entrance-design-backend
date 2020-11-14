@@ -1,7 +1,5 @@
 'use strict';
 
-const { parseMultipartData, sanitizeEntity } = require('strapi-utils');
-
 /**
  * Read the documentation (https://strapi.io/documentation/v3.x/concepts/controllers.html#core-controllers)
  * to customize this controller
@@ -13,20 +11,49 @@ module.exports = {
       ...ctx.request.body,
       provider: 'local'
     }
-    const data = await strapi.plugins['users-permissions'].services.user.add(user);
+
+    let data;
+    try {
+      data = await strapi.plugins['users-permissions'].services.user.add(user);
+    } catch (e) {
+      if (e.code === 'ER_DUP_ENTRY') {
+        ctx.response.status = 409;
+        ctx.response.message = 'This username is not unique.';
+        ctx.response.body = {
+          message: 'This username is not unique.',
+          error: 'User already exists',
+          statusCode: 409
+        };
+      }
+
+      return;
+    }
+
 
     await strapi.plugins['email'].services.email.send({
       to: 'kyle.simon.tong@gmail.com',
       from: 'hello@entrancedesign.co.nz',
       subject: 'A new user completed the design quiz',
-      text: `
-        A new user completed the design quiz. Their email address is ${data.email}
+      html: `<h4>
+        Hi there Entrance Design team,
+        </h4>
 
-        Their quiz result was:
-        ${data.questionnaireResult}
+        <p>A new user has completed the design quiz. Their email address is <strong>${data.email}</strong></p>
+
+        <p>Their quiz result was:</p>
+        <p><strong>${data.questionnaireResult}</strong></p>
+        <br>
+        <p>For more information, you can view this data in the backend systems
+        <a href="https://admin.entrancedesign.co.nz/admin/plugins/content-manager/collectionType/plugins::users-permissions.user">here</a>
+        </p>
       `,
     });
 
-    return 'strapi';
+    ctx.response.status = 201;
+    ctx.response.body = {
+      message: 'Result saved successfully',
+      statusCode: 201
+    };
+    return;
   },
 };
