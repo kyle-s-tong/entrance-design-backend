@@ -12,23 +12,37 @@ module.exports = {
       provider: 'local'
     }
 
+    const userService = strapi.plugins['users-permissions'].services.user;
+
+    const existingUser = await userService.fetch({ username: user.username });
     let data;
-    try {
-      data = await strapi.plugins['users-permissions'].services.user.add(user);
-    } catch (e) {
-      if (e.code === 'ER_DUP_ENTRY') {
-        ctx.response.status = 409;
-        ctx.response.message = 'This username is not unique.';
+    if (existingUser) {
+      try {
+        data = await userService.edit({ id: existingUser.id }, ctx.request.body);
+      } catch (e) {
+        ctx.response.status = e.status || 500;
+        ctx.response.message = e.message;
         ctx.response.body = {
-          message: 'This username is not unique.',
-          error: 'User already exists',
-          statusCode: 409
+          message: e.message,
+          statusCode: e.status
         };
+
+        return;
       }
+    } else {
+      try {
+        data = await userService.add(user);
+      } catch (e) {
+        ctx.response.status = e.status;
+        ctx.response.message = e.message;
+        ctx.response.body = {
+          message: e.message,
+          statusCode: e.status
+        };
 
-      return;
+        return;
+      }
     }
-
 
     await strapi.plugins['email'].services.email.send({
       to: 'kyle.simon.tong@gmail.com',
