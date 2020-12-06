@@ -44,7 +44,7 @@ module.exports = {
     })
 
     await strapi.plugins['email'].services.email.send({
-      to: 'kyle.simon.tong@gmail.com',
+      to: 'hello@entrancedesign.co.nz',
       from: 'hello@entrancedesign.co.nz',
       subject: 'A new order has been created!',
       html: `<h4>
