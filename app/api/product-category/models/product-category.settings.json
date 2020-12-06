@@ -15,6 +15,15 @@
     "Products": {
       "via": "ProductCategory",
       "collection": "product"
+    },
+    "Image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
     }
   }
 }
