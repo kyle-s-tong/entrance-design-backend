@@ -33,6 +33,10 @@
       ],
       "plugin": "upload",
       "required": false
+    },
+    "Slug": {
+      "type": "string",
+      "unique": true
     }
   }
 }

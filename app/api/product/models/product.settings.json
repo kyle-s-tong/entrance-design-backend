@@ -12,7 +12,7 @@
     "Title": {
       "type": "string",
       "required": true,
-      "unique": false
+      "unique": true
     },
     "Images": {
       "collection": "file",
@@ -33,6 +33,10 @@
     "ProductCategory": {
       "model": "product-category",
       "via": "Products"
+    },
+    "Slug": {
+      "type": "string",
+      "unique": true
     }
   }
 }

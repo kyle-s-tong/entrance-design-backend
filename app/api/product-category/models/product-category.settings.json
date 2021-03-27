@@ -10,7 +10,8 @@
   },
   "attributes": {
     "Title": {
-      "type": "string"
+      "type": "string",
+      "unique": true
     },
     "Products": {
       "via": "ProductCategory",
@@ -24,6 +25,10 @@
       ],
       "plugin": "upload",
       "required": false
+    },
+    "Slug": {
+      "type": "string",
+      "unique": true
     }
   }
 }
