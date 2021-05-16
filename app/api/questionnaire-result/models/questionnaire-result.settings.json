@@ -29,6 +29,10 @@
     "OptionSlug": {
       "type": "string",
       "required": true
+    },
+    "UID": {
+      "type": "uid",
+      "targetField": "OptionSlug"
     }
   }
 }

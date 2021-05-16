@@ -37,6 +37,10 @@
     "Slug": {
       "type": "string",
       "unique": true
+    },
+    "UID": {
+      "type": "uid",
+      "targetField": "Slug"
     }
   }
 }
