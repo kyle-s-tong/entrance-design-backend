@@ -37,6 +37,10 @@
     "Slug": {
       "type": "string",
       "unique": true
+    },
+    "ShopifyId": {
+      "type": "string",
+      "private": true
     }
   }
 }
