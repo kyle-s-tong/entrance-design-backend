@@ -71,11 +71,11 @@ module.exports = {
         }
       );
     } catch (e) {
-      ctx.response.status = e.status;
-      ctx.response.message = e.message;
+      ctx.response.status = e.response.status;
+      ctx.response.message = e.response.data.errors[0].title;
       ctx.response.body = {
-        message: e.data,
-        statusCode: e.status
+        message: e.response.data.errors[0].title,
+        statusCode: e.response.status
       };
 
       return;
@@ -113,20 +113,17 @@ module.exports = {
           }
         );
       } catch (e) {
-        console.log(e.data.errors);
-        ctx.response.status = e.status;
-        ctx.response.message = e.data.errors.toString();
+        console.log(e.response.data.errors);
+        ctx.response.status = e.response.status;
+        ctx.response.message = e.response.data.errors[0].title;
         ctx.response.body = {
-          message: e.data.errors.toString(),
-          statusCode: e.status
+          message: e.response.data.errors[0].title,
+          statusCode: e.response.status
         };
 
         return;
       }
     }
-
-    console.log('data: ' + JSON.stringify(data));
-    console.log(user)
 
     if (data.questionnaireResult !== null && user.quizCompleted === true) {
       if (activeCampaignUser && typeof RESULT_TO_TAG_MAP[data.questionnaireResult] !== 'undefined') {
@@ -152,14 +149,12 @@ module.exports = {
             }
           );
         } catch (e) {
-          console.log(e);
-          ctx.response.status = e.status;
-          ctx.response.message = e.data.errors.toString();
+          ctx.response.status = e.response.status;
+          ctx.response.message = e.response.data.errors[0].title;
           ctx.response.body = {
-            message: e.data.errors.toString(),
-            statusCode: e.status
+            message: e.response.data.errors[0].title,
+            statusCode: e.response.status
           };
-
           return;
         }
       }
