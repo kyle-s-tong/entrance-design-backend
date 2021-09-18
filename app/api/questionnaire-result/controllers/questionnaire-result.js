@@ -71,6 +71,7 @@ module.exports = {
         }
       );
     } catch (e) {
+      console.log(e.response.data.errors);
       ctx.response.status = e.response.status;
       ctx.response.message = e.response.data.errors[0].title;
       ctx.response.body = {
@@ -149,6 +150,7 @@ module.exports = {
             }
           );
         } catch (e) {
+          console.log(e.response.data.errors);
           ctx.response.status = e.response.status;
           ctx.response.message = e.response.data.errors[0].title;
           ctx.response.body = {
